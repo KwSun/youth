@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发表文章</title>
+    <link rel="stylesheet" href="http://neilj.github.io/Squire/build/Squire-UI.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../stylesheets/admin.css">
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="./build/squire-raw.js"></script>
+    <script src="http://neilj.github.io/Squire/build/Squire-UI.js"></script>
+    <script>
+    $(document).ready(function() {
+        new SquireUI({
+            replace: 'textarea#foo',
+            height: 600
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="pull-left menutab">
+                <div class="avatar">
+                    <div>
+                        <a href="http://www.weibo.com/518501269" target="_blank">
+                            <img src="../images/admin.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <ul class="nav">
+                    <li>
+                        <a href="index.html">
+                            <span class="fa fa-home"></span>
+                            <span class="title">首页</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" href="#menu-article">
+                            <span class="fa fa-file-word-o"></span><span class="title">文章</span>
+                        </a>
+                    </li>
+                    <div id="menu-article" class="sub">
+                        <ul>
+                            <li>
+                                <a href="article.html">
+                                    <span class="fa fa-pencil"></span><span class="title">写文章</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="article-list.html">
+                                    <span class="fa fa-list-ul"></span><span class="title">文章列表</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <li>
+                        <a data-toggle="collapse" href="#menu-list">
+                            <span class="fa fa-th"></span><span class="title">栏目</span>
+                        </a>
+                    </li>
+                    <div id="menu-list" class="collapse sub">
+                        <ul>
+                            <li>
+                                <a href="column-page.html">
+                                    <span class="fa fa-plus"></span><span class="title">添加单页</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="column-list.html">
+                                    <span class="fa fa-list"></span><span class="title">管理栏目</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <li>
+                        <a href="photo.html">
+                            <span class="fa fa-photo"></span><span class="title">图片</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" href="#menu-user">
+                            <span class="fa fa-user"></span><span class="title">用户</span>
+                        </a>
+                    </li>
+                    <div id="menu-user" class="collapse sub">
+                        <ul>
+                            <li>
+                                <a href="user-add.html">
+                                    <span class="fa fa-user-plus"></span><span class="title">添加用户</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="user-list.html">
+                                    <span class="fa fa-list"></span><span class="title">管理用户</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </ul>
+            </div>
+            <div class="top-bar">
+                <ul>
+                    <li>
+                        <a href="" title="Log Out">
+                            <i class="fa fa-sign-out"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" title="Messages">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="article.html" title="Edit">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <section class="clearfix">
+                    <h1 class="text-center">发表文章</h1>
+                    <div class="Squire-UI">
+                        <div class="menu" contenteditable="false">
+                            <div class="group">
+                                <div data-action="bold" class="item"><i class="fa fa-bold"></i></div>
+                                <div data-action="italic" class="item"><i class="fa fa-italic"></i></div>
+                                <div data-action="underline" class="item"><i class="fa fa-underline"></i></div>
+                                <div id="selectFont" data-action="selectFont" class="item drop-target">
+                                    <i class="fa fa-font"></i>
+                                </div>
+                            </div>
+                            <div class="group">
+                                <div id="makeLink" data-action="makeLink" class="item drop-target drop-element-attached-top drop-element-attached-center drop-target-attached-bottom drop-target-attached-center"><i class="fa fa-link"></i></div>
+                                <div data-action="makeOrderedList" class="item"><i class="fa fa-list"></i></div>
+                                <div id="insertImage" data-action="insertImage" class="item drop-target drop-element-attached-top drop-element-attached-center drop-target-attached-bottom drop-target-attached-center">
+                                    <i class="fa fa-picture-o"></i>
+                                </div>
+                                <div data-action="increaseQuoteLevel" class="item"><i class="fa fa-quote-right"></i></div>
+                            </div>
+                            <div class="group">
+                                <div data-action="makeHeading" class="item"><i class="fa fa-header"></i></div>
+                                <div data-action="alignLeft" class="item"><i class="fa fa-align-left"></i></div>
+                                <div data-action="alignCenter" class="item"><i class="fa fa-align-center"></i></div>
+                                <div data-action="alignRight" class="item"><i class="fa fa-align-right"></i></div>
+                            </div>
+                            <div class="group">
+                                <div data-action="undo" class="item"><i class="fa fa-undo"></i></div>
+                                <div data-action="redo" class="item"><i class="fa fa-undo flip"></i></div>
+                            </div>
+                        </div>
+                        <div class="templates hidden">
+                            <div id="drop-font">
+                                <strong>Change Font</strong>
+                                <i class="fa fa-chevron-up quit"></i>
+                                <br> Text Size:
+                                <select id="textSelector">
+                                    <option data-size="12">Small</option>
+                                    <option data-size="24">Medium</option>
+                                    <option data-size="30">Large</option>
+                                </select>
+                                <br> Font:
+                                <select id="fontSelect">
+                                    <option data-fonts="georgia">Georgia</option>
+                                    <option data-fonts="arial">Arial</option>
+                                    <option data-fonts="helvetica, arial">Helvetica</option>
+                                    <option data-fonts="menlo, consolas, courier new, monospace">Monospace</option>
+                                    <option data-fonts="\" times="" new="" roman\ ",=" " times"="">Times New Roman</option>
+                                    <option data-fonts="tahoma, sans-serif">Tahoma</option>
+                                    <option data-fonts="\" trebuchet="" ms\ ""="">Trebuchet MS</option>
+                                    <option data-fonts="verdana">Verdana</option>
+                                </select>
+                                <br>
+                                <div class="btn submitFont">Apply</div>
+                            </div>
+                            <div id="drop-link">
+                                <strong>Insert Link</strong>
+                                <i class="fa fa-chevron-up quit"></i>
+                                <input placeholder="Link URL" type="text" id="url">
+                                <div class="btn submitLink">Insert</div>
+                            </div>
+                            <div id="drop-image">
+                                <strong>Insert Image</strong>
+                                <i class="fa fa-chevron-up quit"></i>
+                                <input placeholder="Image URL" type="text" id="imageUrl">
+                                <div class="btn sumbitImageURL">Insert</div>
+                            </div>
+                        </div>
+                    </div>
+                    <iframe src="./build/document.html" width="500" height="300">
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

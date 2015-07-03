@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多火DhCMS后台管理系统</title>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/admin.css">
+    <link rel="stylesheet" href="../stylesheets/font-awesome.min.css">
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../javascripts/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="pull-left menutab">
+                <div class="avatar">
+                    <div>
+                        <a href="http://www.weibo.com/518501269" target="_blank">
+                            <img src="../images/admin.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <ul class="nav">
+                    <li>
+                        <a href="index.html">
+                            <span class="fa fa-home"></span>
+                            <span class="title">首页</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" href="#menu-article">
+                            <span class="fa fa-file-word-o"></span><span class="title">文章</span>
+                        </a>
+                    </li>
+                    <div id="menu-article" class="collapse sub">
+                        <ul>
+                            <li>
+                                <a href="article.html">
+                                    <span class="fa fa-pencil"></span><span class="title">写文章</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="fa fa-list-ul"></span><span class="title">文章列表</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <li>
+                        <a data-toggle="collapse" href="#menu-list">
+                            <span class="fa fa-th"></span><span class="title">栏目</span>
+                        </a>
+                    </li>
+                    <div id="menu-list" class="collapse sub">
+                        <ul>
+                            <li>
+                                <a href="column-page.html">
+                                    <span class="fa fa-plus"></span><span class="title">添加单页</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="column-list.html">
+                                    <span class="fa fa-list"></span><span class="title">管理栏目</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <li>
+                        <a href="photo.html">
+                            <span class="fa fa-photo"></span><span class="title">图片</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" href="#menu-user">
+                            <span class="fa fa-user"></span><span class="title">用户</span>
+                        </a>
+                    </li>
+                    <div id="menu-user" class="collapse sub">
+                        <ul>
+                            <li>
+                                <a href="user-add.html">
+                                    <span class="fa fa-user-plus"></span><span class="title">添加用户</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="user-list.html">
+                                    <span class="fa fa-list"></span><span class="title">管理用户</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </ul>
+            </div>
+            <div class="top-bar">
+            	<ul>
+            		<li>
+            			<a href="" title="Log Out">
+            				<i class="fa fa-sign-out"></i>
+            			</a>
+            		</li>
+            		<li>
+            			<a href="" title="Messages">
+            				<i class="fa fa-envelope"></i>
+            			</a>
+            		</li>
+            		<li>
+            			<a href="article.html" title="Edit">
+            				<i class="fa fa-edit"></i>
+            			</a>
+            		</li>
+            	</ul>
+            </div>
+            <div class="tab-content clearfix">
+            	<section>
+            		<p class="marginbot-10">
+                        <span class="h3">栏目</span>
+                        <a href="column-page.html" class="btn btn-link">新建单页</a>
+                        <a href="#column-category" class="btn btn-link" data-toggle="modal">新建列表页</a>
+                    </p>
+                    <div class="modal fade" id="column-category">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">新建列表页</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="#" method="POST" role="form">
+                                    
+                                        <div class="form-group">
+                                            <label for="column-title">栏目标题</label>
+                                            <input type="text" class="form-control" id="column-title" placeholder="Input field">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="column-grade">页面级别</label>
+                                            <input type="text" class="form-control" id="column-grade" placeholder="请输入页面级别，默认为0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="column-date">修改时间</label>
+                                            <input type="date" class="form-control" id="column-date" placeholder="Input field">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="column-Update">更新时间</label>
+                                            <input type="date" class="form-control" id="column-Update" placeholder="Input field">
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">提交</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form action="#" method="POST" class="form-inline marginbot-30" role="form">
+                        <select name="" id="input" class="form-control" required="required">
+                            <option value="0">选择页面类型</option>
+                            <option value="1">栏目1</option>
+                            <option value="1">栏目2</option>
+                            <option value="1">栏目2</option>
+                        </select>
+                        <button type="submit" class="btn btn-success btn-sm">筛选</button>
+                    </form>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>标题</th>
+                                <th>页面类型</th>
+                                <th>页面级别</th>
+                                <th>作者</th>
+                                <th>创建时间</th>
+                                <th>更新时间</th>
+                                <th>编辑</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>团委简介</td>
+                                <td>page</td>
+                                <td>0</td>
+                                <td>多火</td>
+                                <td>2015-6-6</td>
+                                <td>2015-6-10</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary">编辑</a>
+                                    <a href="#" class="btn btn-danger">删除</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>团委简介</td>
+                                <td>page</td>
+                                <td>1</td>
+                                <td>多火</td>
+                                <td>2015-6-6</td>
+                                <td>2015-6-10</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary">编辑</a>
+                                    <a href="#" class="btn btn-danger">删除</a>
+                                </td>
+                            </tr><tr>
+                                <td>团委简介</td>
+                                <td>page</td>
+                                <td>0</td>
+                                <td>多火</td>
+                                <td>2015-6-6</td>
+                                <td>2015-6-10</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary">编辑</a>
+                                    <a href="#" class="btn btn-danger">删除</a>
+                                </td>
+                            </tr><tr>
+                                <td>团委简介</td>
+                                <td>page</td>
+                                <td>0</td>
+                                <td>多火</td>
+                                <td>2015-6-6</td>
+                                <td>2015-6-10</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary">编辑</a>
+                                    <a href="#" class="btn btn-danger">删除</a>
+                                </td>
+                            </tr><tr>
+                                <td>团委简介</td>
+                                <td>page</td>
+                                <td>1</td>
+                                <td>多火</td>
+                                <td>2015-6-6</td>
+                                <td>2015-6-10</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary">编辑</a>
+                                    <a href="#" class="btn btn-danger">删除</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            	</section>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
